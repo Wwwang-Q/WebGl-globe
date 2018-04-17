@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>three.js webgl [Monjori]</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<style>
+			body {
+				color: #ffffff;
+				font-family:Monospace;
+				font-size:13px;
+				text-align:center;
+				font-weight: bold;
+
+				background-color: #000000;
+				margin: 0px;
+				overflow: hidden;
+			}
+
+			#info {
+				position: absolute;
+				top: 0px; width: 100%;
+				padding: 5px;
+			}
+
+			a {
+
+				color: #ffffff;
+			}
+
+			#oldie a { color:#da0 }
+		</style>
+	</head>
+	<body>
+
+		<div id="container"></div>
+		<div id="info">被three.js被玩坏的地球</div>
+
+		<script src="js/three.js"></script>
+
+		<script id="vertexShader" type="x-shader/x-vertex">
+            varying vec2 vUv;
+
+			void main()	{
+                vUv = uv;
+				vec4 mvPosition = modelViewMatrix * vec4( position, 1.0 );
+				gl_Position = projectionMatrix * mvPosition;
+
+			}
+
+		</script>
+
+		<script id="fragmentShader" type="x-shader/x-fragment">
+
+			uniform float time;
+			varying vec2 vUv;
+			uniform sampler2D texture;
+
+			void main()	{
+				
+				vec3 color = texture2D( texture, vUv ).xyz;
+				gl_FragColor = vec4(color,1.0);
+			}
+
+		</script>
+		<script src = "./js/china.js"></script>
+		<script>
+			console.log(chinaData)
+		</script>
+
+		<script src = "js/main.js"></script>
+	</body>
+</html>

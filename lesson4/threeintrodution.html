@@ -1,0 +1,310 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+		<style>
+			.left{
+				text-align: left;
+				
+			}
+			.right{
+				text-align: right
+			}
+			.ctr{
+				text-align: center
+			}
+			section{
+				text-align: left
+			}
+			li{list-style:none;}
+			.reveal code {
+			    font-size: 20px;
+			}
+		</style>
+
+
+		<!-- Printing and PDF exports -->
+		<!-- npm run start 输入地址 http://localhost:8000/?print-pdf -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			console.log(link.href)
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section class = "ctr">
+					<h2>
+						Three.js 可视化入门
+					</h2>
+					<p>Chaos</p>
+					<p>TalkingData</p>
+					<p>可视化工程师</p>
+				</section>
+				<section class = "ctr">
+				   <h2>主要内容</h2>	
+				   <ul>
+				    <li>简介图形学主要概念</li>
+				   	<li>简介Three.js主要组件</li>
+				   	<li>跑起一个Three.js Demo</li>
+				   </ul>
+				</section>
+				<section>
+					<section class= "ctr">
+						<h2>
+							什么是计算机图形学?
+						</h2>
+						<img width="800" height="450" data-src="images/geomrtry2image.jpg" alt="geometrytoimages">
+						<p class="fragment"></p>
+					</section>
+					<section class = "left">
+						<p>
+							计算机图形学是研究通过计算机将数据转换
+							为图形，并在专门显示设备上显示的原理，方法和
+							技术的学科
+						</p>
+					</section>
+					<section class = "left">
+						<p>
+							是一门研究从抽象的几何图元生成真实感图像
+							的学科，又可以叫做图像合成（ Image
+							Synthesis）或者图像生成（ Image Generation）
+						</p>
+						
+					</section>
+					<section class = "left">
+					    <p class = "ctr">
+					     通俗来说：
+						</p>
+						<p class = "ctr">
+						    
+							输入是几何图形，输出是二维的图像
+						</p>
+					</section>
+					<section>
+						修补图像、调整图像色彩、图层、通道、路径、滤镜的...操作属于图像学，具体体现在PostProcessing需要的知识很大部分来自数字图像处理
+					</section>
+				</section>
+				<section>
+					<section class = "ctr">
+					    <h2>图形学主要研究内容</h2>
+						<ul>
+							<li>建模（ Modeling）</li>
+							<li>绘制（ Rendering）</li>
+							<li>动画（ Animation）</li>
+						</ul>
+					</section>
+					<section>
+						<h2 class = "ctr">建模</h2>
+						<p>主要目的是生成场景、物体的几何图元描述</p>
+						
+						<br>
+					
+							<p class="fragment">推荐开源工具blender</p>
+							<br>
+							<p class="fragment">
+						
+						http://www.bilibili.com/video/av909518/</p>
+						
+					</section>
+					<section>
+						<h2 class = "ctr">渲染</h2>
+						<p class="fragment">
+						主要研究如何快速、真实地将由建模步骤生成
+                        的几何图元转换成图像
+                        </p>
+                        <br>
+                        <p class="fragment">Three.js主要实现这部分的代码</p>
+
+					</section>
+					<section>
+						<h2 class = "ctr">动画</h2>
+						<p class="fragment">三维计算机动画：利用图形渲染程序生成一系列景物和角色运动的连续画面</p>
+						<br>
+						<p class="fragment">
+							Three.js 的动画比较孱弱，不是教学重点
+						</p>
+
+					</section>
+				</section>
+				<section>
+				    <section class = "ctr">
+				    	 <h2>先修知识</h2>
+						
+						<p class = "fragment">解析几何</p>
+						<p class = "fragment">线性代数</p>
+						<p class = "fragment">javascript</p>
+						
+							<p class="fragment">不会数学没关系 至少会javascript</p>
+				    </section>
+				    <section>
+				    	<p class = "left">现今程序员的情况好多了-只要有一台便宜的二手电脑，一张Linux光盘和一个互联网帐户，你就已经拥有了把自己提升到任何级别的编程水平所需的全部工具</p>
+				    	<p class = "right">--John D. Carmack</p>
+				    </section>
+				 
+				</section>
+				<section class = "ctr">
+					<h2>Three.js主要应用方向</h2>
+					<p>广告</p>
+					<p>可视化</p>
+					<p>VR&&AR</p>
+					<p>游戏</p>
+				</section>
+				<section>
+					
+					<section id = "fragments" >
+						<h2>Three.js 可视化入门路线</h2>
+						<p class= "fragment" >
+							小白用 editor 用直观的方式学习基本的概念
+						</p>
+						<p class = "fragment">初学者看example</p>
+						<p class = "fragment">熟悉的人用文档检索API</p>
+						<p class = "fragment">进阶系统学习计算机图形图像</p>
+						<p class = "fragment">高手从资料到源码实现</p>
+						<p class = "fragment">PS：高手爱咋咋的别听我的</p>
+					</section>
+					
+				</section>
+				<section>
+				<h2>Three.js 主要课堂内容</h2>
+				<p>使用editor 感性化认识Three.js</p>
+				<p>使用Three.js 源码实现个地球</p>
+				<p>看一下example (时间允许)</p>
+				<p>看一下源码结构 (时间允许)</p>
+				</section>
+				<section  >
+					<h2>主要组件</h2>
+					<p>Scene</p>
+					<p>Renderer</p>
+					<p>Camera</p>
+					<p>Object</p>
+					<p class = "fragment">感性认识，只讲能让程序跑起来最少参数</p>
+				</section>	
+				<section >
+					<section>
+						<h2>Camera</h2>
+						<p>只介绍透视相机</p>
+						<p>近大远小</p>
+						<p>类似人眼</p>
+					</section>
+					<section>
+						<code class="hljs" data-trim contenteditable>THREE.PerspectiveCamera(fov, aspect, near, far)</code>
+						<p>fov是视景体竖直方向上的张角，拉近拉远镜头</p>
+						<p>aspect等于width / height，相机横纵比例，设置为canvas的宽高，否则或被拉瘪</p>
+						<p>near和far分别是照相机的近裁面，远裁面，均为正值，且far应大于near。</p>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>Object</h2>
+						<p>Geometry+Material</p>
+						<code class="hljs" data-trim contenteditable>THREE.SphereGeometry(radius, widthSegments, heightSegments)</code>
+						<code class="hljs" data-trim contenteditable>THREE.MeshBasicMaterial({
+
+					        map:THREE.ImageUtils.loadTexture( "textures" )
+				}</code>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>Scene</h2>
+						<p>放置物体</p>
+						<p>场景管理，层次模型</p>
+					</section>
+					
+				</section>
+				<section>
+					<h2>renderer</h2>
+					<p>渲染器</p>
+					<p>渲染器Object，不可见，只是当作一个接口用就好了</p>
+					<code>
+						var renderer = new THREE.WebGLRenderer(); 
+						renderer.render(scence,camera); 
+					</code>
+				</section>
+				<section class = "ctr">
+						<p>editor演示时间</p>
+					</section>
+					<section class = "ctr">
+						<section>代码还原时间</section>
+						<section>
+							<h2>Three.js 程序结构</h2>
+							<p>先初始化，然后进行一个大循环，每一帧更新</p>
+							<img width="400" height="450" src="images/struct.jpg" alt="">
+						</section>
+					</section>
+				<section>
+					<h2>可能存在的example时间</h2>
+					<p>canvas 3d渲染器</p>
+					<p>canvas_geometry_cube</p>
+					<p>css3 3d渲染器</p>
+					<p>css3d_periodictable</p>
+					<p>svg渲染器</p>
+					<p>svg_sandbox</p>
+					<p>软件 3d渲染器</p>
+					<p>software_sandbox</p>
+				</section>
+				<section>
+					<h2>可能存在的源码时间</h2>
+					<P>Editor ：简单的可视化编辑器</P>
+					<P>Examples目录：所有的例子，参考来实现</P>
+					<P>Src目录：R79 语法ES6，很好的数学，颜色，几何代码库，
+					R25 最早实现THREE.WebGLRenderer，可以看看基本的渲染流程
+					</P>
+					<P>Utils目录：converters，exporters模型导出工具</P>
+
+				</section>
+				<section>
+					<h2>
+						THREE.JS 入门之被玩坏的地球
+					</h2>
+					<p>跑起了一个地球demo，这次我们讲一下如何绘制地球上的点，主要涉及到如何使用粒子系统，以及简单的交互。其中算法涉及到将经纬度坐标转化到球体上，也就是将经度度转化为笛卡尔坐标系等些简单的gis知识</p>
+				</section>
+				<section class = "ctr">
+				<h2>Thanks</h2>
+				</section>
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+		// 现在是做可视化各种chart功能已经很完善了。Three.js主要是绘制各种3d场景，其中大家做的最多的场景就是绘制地球。上一讲数据可视化之 Three.js 入门主要是讲了基础的Three.js 知识，跑起了一个地球demo，这次我们讲一下如何绘制地球上的点，主要涉及到如何使用粒子系统，以及简单的交互。其中算法涉及到将经纬度坐标转化到球体上，也就是将经度度转化为笛卡尔坐标系等些简单的gis知识。
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				dependencies: [
+				    { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+		</script>
+	</body>
+</html>
